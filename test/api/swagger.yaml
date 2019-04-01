@@ -20,6 +20,24 @@ paths:
           type: file
           description: The file to upload.
       responses:
-        default:
+        201:
           description: "successful operation"
+          schema:
+            type: string
+      x-swagger-router-controller: TestController
+  /extracttext:
+    get:
+      tags:
+        - "Test"
+      operationId: "extractTextFromFile"
+      parameters:
+        - in: query
+          name: filepath
+          type: string
+          description: The file path.
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: string
       x-swagger-router-controller: TestController

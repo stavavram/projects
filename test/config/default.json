@@ -5,5 +5,14 @@
   "cache": {
     "host": "localhost",
     "port": 6379
-  }
+  },
+  "archive":{
+    "host": "localhost:9200"
+  },
+  "storage":{
+    "filesystem":{
+      "path": "C:\\test"
+    }
+  },
+  "imageTypes": [".jpeg", ".png"]
 }

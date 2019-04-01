@@ -1,33 +1,23 @@
 var container = require('../containerConfig');
-var multer = require('multer');
-//var uploader = container.get('storage');
-//var upload = uploader.upload()
-var upload = multer({
-    storage: multer.diskStorage({
-        destination: "./uploads",
-        filename: (req, file, cb) => {
-            cb(null, file.fieldname + '-' + Date.now())
-        }
-    })
-}).single("upfile");
-module.exports.uploadFile = (upload, function (req, res, next) {
+var ocrConvertor = container.get("ocrconvertor")
 
-    /*upload(req, res, function (err) {
-        if (err){
-            res.end(err.message);
-        }else{
-            // If file is not selected
-            if (req.file == undefined) {
-                res.end('No file selected!');
+module.exports.uploadFile = function (req, res, next) {
+    let pathResults = req.upload.files.map(file=> file.path);
+    res.setHeader("Content-Type", "application/json")
+    res.statusCode = 201;
+    res.end(JSON.stringify(pathResults));
+}
 
-            }
-            else{
-                res.end('File uploaded successfully!');
-            }
-        }
-    });*/
-});
-
-/*(req, res, function (err) {
-
-    });*/
+module.exports.extractTextFromFile = async function (req, res, next) {
+    let path = req.swagger.params.filepath.value;
+    res.setHeader("Content-Type", "application/text");
+    try{
+        let textRes = await ocrConvertor.convertImageToText(path);
+        res.statusCode = 200;
+        res.end(textRes);
+    }
+    catch (err){
+        res.statusCode = 500;
+        res.end(err.message);
+    }
+}

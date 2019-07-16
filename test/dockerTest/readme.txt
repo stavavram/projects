@@ -11,3 +11,7 @@ docker run -p 8085:8080 -v /home/stavav/projects:/images  node-test
 
 
 open url = localhost:8085/docs
+
+
+####for unit tests run the command:
+./node_modules/mocha/bin/mocha

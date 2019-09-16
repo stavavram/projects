@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>SigmaJS example</title>
+    <script src="./build/sigma.min.js"></script>
+    <script src="./sigma-plugins/sigma.plugins.dragNodes.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./runtime-events.js"></script>
+    <script src="./projects-manager.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/card.css">
+    <link rel="stylesheet" type="text/css" href="./assets/runtime-buttons.css">
+</head>
+<body style="background-color: ghostwhite">
+<div id="maindivid" style="text-align: center">
+    <div>
+        <h3>Welcome to DiAlgo </h3>
+        <span>projects list :</span>
+    </div>
+</div>
+<div id="projectdivid" style="visibility: hidden">
+    <div class="card container" style="height:20%;background-color: azure">
+        <table border="1" style="width: 40%; height: 100%;">
+            <tr>
+                <td class="center">
+                    Round: <h4 id="roundlable"> 0 </h4>
+                </td>
+                <td class="center">
+                    <button id="btnloadGraph" class="btn btn-info" onclick="drawGraph()">Load Graph</button>
+                </td>
+                <td id="tdbuttons" class="center">
+
+                </td>
+                <td class="center">
+                    <button id="btnPlay" class="play-button" onclick="runSimulator()"></button>
+                    <button id="btnPlayOneStep" class="play-one-step-button" onclick="runOneStep()"></button>
+                    <button id="btnStop" class="stop-button" onclick="stop()"></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="height:5%">
+    </div>
+    <div id='sigma-container' style="height:75%" class="card-graph"></div>
+</div>
+<script src="graph-builder.js"></script>
+</body>
+</html>

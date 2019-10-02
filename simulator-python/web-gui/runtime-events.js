@@ -1,23 +1,23 @@
 var baseUrl = "http://localhost:5000/";
 var buttonsIds = ["btnPlay", "btnPlayOneStep", "btnStop"]
 var round=0;
-var isAlreadyActive = false;
+//var isAlreadyActive = false;
 var runSampling = true;
 
 var runSimulator = function () {
-    startRoundSampling();
-    isAlreadyActive = true;
+    //isAlreadyActive = true;
     blockButtons();
     $.get(baseUrl + "run", function (data, status) {
+        startRoundSampling();
         console.log("run" + status);
         drawGraph();
     });
 }
 
 var runOneStep = function () {
-    startRoundSampling();
-    isAlreadyActive = true;
+    //isAlreadyActive = true;
     $.get(baseUrl + "run-single-step", function (data, status) {
+        startRoundSampling();
         console.log("run-single-step" + status);
         drawGraph();
     });
@@ -25,6 +25,7 @@ var runOneStep = function () {
 
 var stop = function () {
     $.get(baseUrl + "stop", function (data, status) {
+        startRoundSampling();
         console.log("stop" + status);
         unBlockButtons();
         drawGraph();
@@ -55,11 +56,12 @@ var sendRoundSampling = function(){
 };
 
 var startRoundSampling = async function() {
-    if(isAlreadyActive == false) {
-        while (runSampling) {
-            await sendRoundSampling();
-        }
-    }
+    await sendRoundSampling();
+    //if(isAlreadyActive == false) {
+        //while (runSampling) {
+
+        //}
+    //}
 };
 
 var invokeFunction = function (methodName, projectName) {

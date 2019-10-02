@@ -23,15 +23,17 @@ class Node:
         self.edges.append(edge_instance)
 
 
-    def broadcast(self, message):
+    def broadcast(self, message, blacklist_ids = []):
         for neighbor in self.edges:
+            if blacklist_ids.__contains__(neighbor.end_node_id):
+                continue
             end_node = RunTimeEngine.getInstance().get_node_by_id(neighbor.end_node_id)
-            packet_instance = Packet(end_node.ID, self.ID, message)
+            packet_instance = Packet(self.ID, end_node.ID, message)
             end_node.add_packet_to_inbox(packet_instance)
 
 
     def send(self, message, target):
-        packet_instance = Packet(target.ID, self.ID, message)
+        packet_instance = Packet(self.ID, target.ID, message)
         target.add_packet_to_inbox(packet_instance)
 
 

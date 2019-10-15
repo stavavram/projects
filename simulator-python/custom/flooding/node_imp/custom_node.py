@@ -9,17 +9,19 @@ class CustomNode(Node):
     def __init__(self):
         Node.__init__(self)
         self.is_root = False
+        self.parent = None
 
     def handle_messages(self):
-        if self.color is not YELLOW:
-            if self.is_root and RunTimeEngine.getInstance().rounds == 1:
-                self.print_neighbors()
-                self.color = YELLOW
-                self.broadcast(MarkMessage("hello world"))
-            else:
+        if self.is_root and RunTimeEngine.getInstance().rounds == 1:
+            self.print_neighbors()
+            self.color = YELLOW
+            self.broadcast(MarkMessage("hello world"))
+        else:
+            if(self.parent == None and self.is_root is False):
                 if self.inbox.has_next() == True:
                     self.color = YELLOW
                     msg = self.inbox.next()
+                    self.parent = self.inbox.get_sender_of_active_packet().ID
                     print ("node:{} recieved msg".format(self.ID))
                     self.broadcast(msg)
 

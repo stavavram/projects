@@ -13,6 +13,5 @@ DEFAULT_AMOUNT = 300
 def get_nodes_data():
     nodes = RunTimeEngine.getInstance().get_nodes()
     if(sys.getsizeof(nodes) <= AMOUNT_LIMIT):
-        #mapping = map(lambda node: node.__dict__, nodes)
         return Response(jsons.dumps(nodes))
     return Response()

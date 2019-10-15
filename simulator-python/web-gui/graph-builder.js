@@ -55,7 +55,7 @@ dragListener.bind('dragend', function(event) {
 
 var buildGraph = function (data) {
     for (let i = 0; i < data.length; i++) {
-        let size = 5;
+        let size = 12;
         if(data[i].inbox.packets_queue.queue.length > 0){
             size += data[i].inbox.packets_queue.queue.length * 3;
         }
@@ -70,7 +70,7 @@ var buildGraph = function (data) {
         }
 
         graph.nodes.push({
-            id: "" + data[i].ID,
+            id:  "" + data[i].ID,
             label: "" + data[i].ID,
             x:  posX,
             y: posY,

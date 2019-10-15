@@ -8,12 +8,15 @@ class CustomGlobal(AbstractCustomGlobal):
     nodes = []
 
     def main(self):
-        nodes = GraphGenerator.generate_graph(50, CustomNode, 0.2)
+        nodes = GraphGenerator.generate_graph(10, CustomNode, 0.2)
         max = 0
         for node in nodes:
             if len(node.edges) > max:
                 max = len(node.edges)
         print("delta is: " + str(max))
+
+        for node in nodes:
+            node.graph_delta = max
         self.nodes = nodes
 
     def pre_round(self):
@@ -27,4 +30,9 @@ class CustomGlobal(AbstractCustomGlobal):
             if node.inbox.size() > max:
                 max = node.inbox.size()
         print("Max inbox queue size is: {}".format(max))
+
+        for node in self.nodes:
+            if node.is_different_from_neighbors(node.get_color()) == False:
+                return;
+        print("Finish!!!!")
 

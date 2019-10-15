@@ -1,4 +1,3 @@
-from core.utils.jsonable import Jsonable
 
 class FifoQueue:
     def __init__(self):

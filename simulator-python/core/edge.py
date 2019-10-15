@@ -1,4 +1,4 @@
-from core.utils.jsonable import Jsonable
+
 
 class Edge:
     def __init__(self, start_node_id, end_node_id):

@@ -57,11 +57,6 @@ var sendRoundSampling = function(){
 
 var startRoundSampling = async function() {
     await sendRoundSampling();
-    //if(isAlreadyActive == false) {
-        //while (runSampling) {
-
-        //}
-    //}
 };
 
 var invokeFunction = function (methodName, projectName) {

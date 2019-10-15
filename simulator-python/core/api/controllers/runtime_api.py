@@ -5,6 +5,7 @@ from flask import (
     request
 )
 from core.runtime_engine import RunTimeEngine
+from core.custom_global_manager import CustomGlobalManager
 
 runtime_api = Blueprint('runtime_api', __name__)
 
@@ -21,6 +22,7 @@ def invoke_main():
         module = __import__("{}.{}.custom_global".format(BASE_PATH_FOR_IMPORT, project))
         custom_class = getattr(getattr(getattr(module, project), "custom_global"), "CustomGlobal")
         instance = custom_class()
+        CustomGlobalManager.set_custom_global(instance)
         instance.main()
     return Response()
 

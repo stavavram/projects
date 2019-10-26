@@ -13,6 +13,7 @@ class GraphGenerator:
     def generate_graph_direct_or_not(nodes_num, node_class, edge_prob, is_direct = True):
         nodes = GraphGenerator.create_nodes(nodes_num, node_class)
         for i in range(nodes_num):
+            print(i)
             for j in range(nodes_num):
                 if(i!= j and  GraphGenerator.random(0, 100)/100 <= edge_prob) \
                         and list(map(lambda edge: edge.end_node_id == nodes[j].ID, nodes[i].edges)).__contains__(True) is False:

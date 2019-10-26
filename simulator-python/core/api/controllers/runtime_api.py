@@ -4,12 +4,11 @@ from flask import (
     Response,
     request
 )
+from core.config.config import BASE_PATH_FOR_IMPORT
 from core.runtime_engine import RunTimeEngine
 from core.custom_global_manager import CustomGlobalManager
 
 runtime_api = Blueprint('runtime_api', __name__)
-
-BASE_PATH_FOR_IMPORT = "custom"
 
 @runtime_api.route('/get-rounds')
 def get_rounds():

@@ -4,12 +4,10 @@ from flask import (
     Blueprint,
     jsonify
 )
-
+from core.config.config import BASE_PATH
 from core.runtime_engine import RunTimeEngine
 
 projects_api = Blueprint('projects_api', __name__)
-
-BASE_PATH = "..\\..\\..\\custom\\"
 
 @projects_api.route('/get-projects')
 def get_projects():

@@ -3,6 +3,9 @@ from core.runtime_engine import RunTimeEngine
 from ..message_imp.custom_message import MarkMessage
 
 class CustomNode(Node):
+    is_finish = 0
+    finish_for_root_ids = []
+
     def __init__(self):
         Node.__init__(self)
         self.parent_per_path_root_id = {}
@@ -17,9 +20,13 @@ class CustomNode(Node):
                 root_id = msg.path_root_id
                 if self.parent_per_path_root_id.get(root_id) is None:
                     self.parent_per_path_root_id[root_id] = self.inbox.get_sender_of_active_packet().ID
-                    print("node: {} recieve msg from node: {}".format(self.ID, self.inbox.get_sender_of_active_packet().ID))
+                    print("node: {} recieve msg from node: {}".format(
+                        self.ID, self.inbox.get_sender_of_active_packet().ID)
+                    )
                     self.broadcast(msg, [root_id, self.inbox.get_sender_of_active_packet().ID]);
-
+                else:
+                    if root_id not in self.finish_for_root_ids:
+                        self.finish_for_root_ids.append(root_id)
 
     def get_neighbors(self):
         neighbors_array = []

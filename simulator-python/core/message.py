@@ -1,3 +1,3 @@
-class Message:
+class Message():
     def clone(self):
         """"""

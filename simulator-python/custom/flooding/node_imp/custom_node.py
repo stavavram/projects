@@ -13,7 +13,6 @@ class CustomNode(Node):
 
     def handle_messages(self):
         if self.is_root and RunTimeEngine.getInstance().rounds == 1:
-            self.print_neighbors()
             self.color = YELLOW
             self.broadcast(MarkMessage("hello world"))
         else:

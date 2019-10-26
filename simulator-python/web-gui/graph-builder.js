@@ -82,13 +82,15 @@ var buildGraph = function (data) {
 
     for (let i = 0; i < data.length; i++) {
         for(let j=0 ; j < data[i].edges.length; j++){
-            graph.edges.push({
-                id: `e-${i}:${j}`,
-                source: data[i].edges[j].start_node_id,
-                target: data[i].edges[j].end_node_id,
-                color: 'Blue',
-                type: 'curvedArrow'
-            });
+            if(data.map(x=> x.ID).indexOf(data[i].edges[j].end_node_id) != -1) {
+                graph.edges.push({
+                    id: `e-${i}:${j}`,
+                    source: data[i].edges[j].start_node_id,
+                    target: data[i].edges[j].end_node_id,
+                    color: 'Blue',
+                    type: 'curvedArrow'
+                });
+            }
         }
     }
 }

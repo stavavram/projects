@@ -11,7 +11,7 @@ class CustomGlobal(AbstractCustomGlobal):
     nodes = []
 
     def main(self):
-        nodes = GraphGenerator.generate_graph(3000, CustomNode, 0.08)
+        nodes = GraphGenerator.generate_graph(100, CustomNode, 0.08)
         max = 0
         for node in nodes:
             if len(node.edges) > max:

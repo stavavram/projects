@@ -13,7 +13,7 @@ class RunTimeEngine:
             self.is_simulator_in_running = False
             self.rounds = 0
             self.current_id = 0
-            self.is_engine_active = False
+            self.engine_active = False
             RunTimeEngine.__instance = self
 
     @staticmethod
@@ -22,9 +22,18 @@ class RunTimeEngine:
             RunTimeEngine()
         return RunTimeEngine.__instance
 
+    def activate_engine(self):
+        self.engine_active = True
+
+    def disactivate_engine(self):
+        self.engine_active = False
+
+    def is_engine_active(self):
+        return self.engine_active
+
     def run_simulator(self):
         self.is_simulator_in_running = True
-        while (self.is_simulator_in_running):
+        while self.is_simulator_in_running:
             self.run_simulator_step()
 
     def stop_simulator(self):

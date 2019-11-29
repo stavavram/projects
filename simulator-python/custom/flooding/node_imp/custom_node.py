@@ -16,8 +16,8 @@ class CustomNode(Node):
             self.color = YELLOW
             self.broadcast(MarkMessage("hello world"))
         else:
-            if(self.parent == None and self.is_root is False):
-                if self.inbox.has_next() == True:
+            if self.parent is None and self.is_root is False:
+                if self.inbox.has_next() is True:
                     self.color = YELLOW
                     msg = self.inbox.next()
                     self.parent = self.inbox.get_sender_of_active_packet().ID

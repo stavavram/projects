@@ -7,16 +7,8 @@
 .card-graph {
     box-shadow: 0 4px 8px 0 rgba(0,0,0.3,0.5);
     transition: 0.3s;
-    background-color: azure;
+    background-color: #50534F;
     width: 100%;
-}
-
-.card:hover {
-    box-shadow: 2px 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.card-graph:hover {
-    box-shadow: 2px 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .container {

@@ -1,22 +1,16 @@
 .play-button {
     background: url(./images/play-button.png);
-    background-size: cover;
-    height: 30px;
-    width: 30px;
+    background-size: 100% 100%;
 }
 
 .play-one-step-button {
     background: url(./images/play-one-step-button.png);
-    background-size: cover;
-    height: 30px;
-    width: 30px;
+    background-size: 100% 100%;
 }
 
 .stop-button {
     background: url(./images/stop-button.png);
-    background-size: cover;
-    height: 30px;
-    width: 30px;
+    background-size: 100% 100%;
 }
 
 .center {
@@ -71,4 +65,8 @@ input:checked + .slider:before {
 
 input:checked + .slider {
     background-color: #2196F3;
+}
+#sigma-container {
+    height: 100%;
+    width: 100%;
 }

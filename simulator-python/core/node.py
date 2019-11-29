@@ -1,12 +1,14 @@
 import json
 import  jsonpickle
+
+from core.config.config import KEY_VALUE_STORE_TYPE
 from core.utils.visualization_utils import color
 from core.inbox import Inbox
 from core.edge import Edge
 from core.runtime_engine import RunTimeEngine
 from core.packet import Packet
 from core.storages.store_factory import StoreFactory
-from core.storages.stores_keys import MEMORY_STORE
+
 
 class Node:
     def __init__(self, id = None):
@@ -14,7 +16,7 @@ class Node:
             self.ID = id
         else:
             self.ID = RunTimeEngine.getInstance().generate_node_id()
-        self.store = StoreFactory.create_store(MEMORY_STORE)
+        self.store = StoreFactory.create_store(KEY_VALUE_STORE_TYPE)
         self.inbox = Inbox()
         self.edges = []
         self.color = color.BLACK
@@ -33,10 +35,9 @@ class Node:
                 continue
             end_node = RunTimeEngine.getInstance().get_node_by_id(edge.end_node_id)
             msg_mapping_key = self._create_key_of_msg_and_id(message, str(end_node.ID))
-            if self.store.get_from_storage(RunTimeEngine.getInstance().rounds).get_from_storage(msg_mapping_key) is None:
-                edge
+            if self.store[RunTimeEngine.getInstance().rounds][msg_mapping_key] is None:
                 self.send(message, end_node)
-                self.store.get_from_storage(RunTimeEngine.getInstance().rounds).add_to_storage(msg_mapping_key, True)
+                self.store[RunTimeEngine.getInstance().rounds][msg_mapping_key] = True
 
     def send(self, message, target):
         packet_instance = Packet(self.ID, target.ID, message)
@@ -55,8 +56,8 @@ class Node:
         return self.color
 
     def _init_messages_store(self):
-        if self.store.get_from_storage(RunTimeEngine.getInstance().rounds) is None:
-            self.store.add_to_storage(RunTimeEngine.getInstance().rounds, StoreFactory.create_store(MEMORY_STORE))
+        if self.store[RunTimeEngine.getInstance().rounds] is None:
+            self.store[RunTimeEngine.getInstance().rounds] = StoreFactory.create_store(KEY_VALUE_STORE_TYPE)
 
     def _create_key_of_msg_and_id(self, message, id):
         return "id:{}___msgObj:{}".format(id, json.dumps(json.loads(jsonpickle.encode(message))))

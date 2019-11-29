@@ -11,8 +11,5 @@ projects_api = Blueprint('projects_api', __name__)
 
 @projects_api.route('/get-projects')
 def get_projects():
-    RunTimeEngine.getInstance().is_engine_active = False
-    RunTimeEngine.getInstance().clean_nodes()
-    RunTimeEngine.getInstance().rounds = 0
     path = os.path.join(os.path.dirname(os.path.abspath(__file__)),BASE_PATH)
     return jsonify(listdir(path))

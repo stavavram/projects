@@ -9,6 +9,5 @@ if platform.system() == "Windows":
     BASE_PATH = "..\\..\\..\\custom\\"
 else:
     BASE_PATH = "../../../custom/"
-BASE_PATH = "..\\..\\..\\custom\\"
 BASE_PATH_FOR_IMPORT = "custom"
 SIMULATOR_NAME = "simulator-python"

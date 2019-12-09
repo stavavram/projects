@@ -1,16 +1,19 @@
 .play-button {
     background: url(./images/play-button.png);
     background-size: 100% 100%;
+    font-size: 0.6em !important;
 }
 
 .play-one-step-button {
     background: url(./images/play-one-step-button.png);
     background-size: 100% 100%;
+    font-size: 0.6em !important;
 }
 
 .stop-button {
     background: url(./images/stop-button.png);
     background-size: 100% 100%;
+    font-size: 0.6em !important;
 }
 
 .center {

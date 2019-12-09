@@ -40,12 +40,14 @@ var prepareModal = function(methodName){
     params = methodsData[methodName]
     for(let paramKey in params) {
         $("#paramsid").append(
+            `<div style="margin-bottom:3%">` +
             `<label class="paramsforpassing" style="color:black">name: ${params[paramKey].name}</label> ` +
             `<label style="color:black">description: ${!params[paramKey].description ? "Empty": params[paramKey].description}</label> ` +
-            `<input class="paramsforpassing" style="width: 150px;color:black"/>`
+            `<input class="paramsforpassing" style="width: 150px;color:black"/>` +
+            `</div>`
         )
     }
-    $("#paramsid").append(`<button type="button" class="btn btn-default" onclick="invokeProjectMethod('${currentProject}', '${methodName}')">Activate</button>`)
+    $("#paramsid").append(`<div><button type="button" class="btn btn-info" onclick="invokeProjectMethod('${currentProject}', '${methodName}')">Activate</button></div>`)
 }
 
 var cleanDiv = function(id){

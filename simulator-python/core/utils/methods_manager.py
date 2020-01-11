@@ -25,6 +25,8 @@ def store_method(func, **kwargs):
     vars = inspect.getargspec(func).args
     if 'self' in vars:
         vars.remove('self')
+    if 'cls' in vars:
+        vars.remove('cls')
     parameters_info = {}
     for var in vars:
         description = ""

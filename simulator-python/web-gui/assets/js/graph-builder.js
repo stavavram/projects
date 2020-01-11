@@ -42,7 +42,8 @@ var drawGraph = function () {
 }
 
 var clickNodeEvent = function(nodeEvent){
-    alert(`Node id: ${nodeEvent.data.node.id}, have ${nodeEvent.data.node.inbox.packets_queue.queue.length} wating messages`);
+    //alert(`Node id: ${nodeEvent.data.node.id}, have ${nodeEvent.data.node.inbox.packets_queue.queue.length} wating messages`);
+    nodeEvent.data.node.size +=5;
 }
 
 dragListener.bind('dragend', function(event) {
@@ -56,9 +57,9 @@ dragListener.bind('dragend', function(event) {
 var buildGraph = function (data) {
     for (let i = 0; i < data.length; i++) {
         let size = 12;
-        if(data[i].inbox.packets_queue.queue.length > 0){
-            size += data[i].inbox.packets_queue.queue.length * 3;
-        }
+        //if(data[i].inbox.packets_queue.queue.length > 0){
+        //    size += data[i].inbox.packets_queue.queue.length * 3;
+        //}
         let posX = posXPerID[data[i].ID] ? posXPerID[data[i].ID] : Math.random() * 100;
         let posY = posYPerID[data[i].ID] ? posYPerID[data[i].ID] : Math.random() * 100;
 

@@ -15,8 +15,7 @@ class GraphGenerator:
         for i in range(nodes_num):
             print(i)
             for j in range(nodes_num):
-                if(i!= j and  GraphGenerator.random(0, 100)/100 <= edge_prob) \
-                        and list(map(lambda edge: edge.end_node_id == nodes[j].ID, nodes[i].edges)).__contains__(True) is False:
+                if i!= j and  GraphGenerator.random(0, 100)/100 < edge_prob and (list(map(lambda edge: edge.end_node_id == nodes[j].ID, nodes[i].edges)).__contains__(True) is False):
                     nodes[i].add_connection_to(nodes[j])
                     if is_direct is False:
                         nodes[j].add_connection_to(nodes[i])

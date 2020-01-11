@@ -31,6 +31,7 @@ def invoke_main():
         module = __import__("{}.{}.custom_global".format(BASE_PATH_FOR_IMPORT, project))
         custom_class = getattr(getattr(getattr(module, project), "custom_global"), "CustomGlobal")
         instance = custom_class()
+        store.add_to_storage("custom_global_instance", instance)
         CustomGlobalManager.set_custom_global(instance)
         instance.main()
         methods = convert_store_to_json(store[project])
@@ -49,9 +50,7 @@ def invoke_method():
         method = data.get('method')
         del data['project']
         del data['method']
-        module = __import__("{}.{}.custom_global".format(BASE_PATH_FOR_IMPORT, project))
-        custom_class = getattr(getattr(getattr(module, project), "custom_global"), "CustomGlobal")
-        instance = custom_class()
+        instance = store.get("custom_global_instance")
         method_to_call = getattr(instance, method)
         method_to_call(**data)
         return Response(jsons.dumps("success"),200)

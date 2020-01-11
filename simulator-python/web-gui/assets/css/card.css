@@ -5,10 +5,16 @@
 }
 
 .card-graph {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0.3,0.5);
+    box-shadow: 0 4px 30px 0 rgba(0,0,0.3,0.5);
     transition: 0.3s;
-    background-color: #50534F;
+    background-image:  -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
     width: 100%;
+}
+
+.card-simulator {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0.3,0.5);
+    background-image:  -webkit-linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../images/banner.jpg");
+
 }
 
 .container {

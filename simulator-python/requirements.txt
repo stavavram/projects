@@ -1,3 +1,3 @@
-flask_cors==3.0.8
+flask_cors==3.0.9
 jsons==0.10.1
 jsonpickle==1.2.0
